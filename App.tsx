@@ -19,7 +19,7 @@ import {
   useColorMode,
   NativeBaseProvider,
   VStack,
-  Code,
+  Code
 } from 'native-base';
 import NativeBaseIcon from './src/components/NativeBaseIcon';
 
