@@ -3,11 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios",
+    "start": "npx react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-project": "rm -rf android/app/build && rm -rf android/build && rm -rf $HOME/.gradle/caches/ && rm -f android/app/src/main/assets/index.android.bundle",
+    "compile-app": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "generate-debug-apk": "yarn clean-project && yarn compile-app && cd android && ./gradlew assembleDebug && cd ..",
+    "generate-release-apk": "yarn clean-project && yarn compile-app && cd android && ./gradlew assembleRelease && cd ..",
+    "generate-bundle-release": "yarn clean-project && yarn compile-app && cd android && ./gradlew bundleRelease && cd .."
   },
   "dependencies": {
     "native-base": "3.3.7",
