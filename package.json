@@ -15,8 +15,11 @@
     "generate-bundle-release": "yarn clean-project && yarn compile-app && cd android && ./gradlew bundleRelease && cd .."
   },
   "dependencies": {
-    "native-base": "3.3.7",
+    "enzyme": "^3.11.0",
+    "native-base": "^3.4.3",
     "react": "17.0.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^18.0.0",
     "react-native": "0.64.1",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-svg": "^12.1.1"
@@ -25,10 +28,14 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@types/enzyme": "^3.10.12",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.64.5",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^26.6.3",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^7.14.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.64.0",
@@ -40,6 +47,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "snapshotSerializers": [
+      "./node_modules/enzyme-to-json/serializer"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
